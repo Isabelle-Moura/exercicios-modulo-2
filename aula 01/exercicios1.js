@@ -2,15 +2,14 @@
 
 const numbers = [1, 2, 3, 4, 5];
 
-const sumarizeNumbers = (numbers) => {
+const sumNumbers = (numbers) => {
   return numbers.reduce((counter, number) => {
     return counter + number;
   }, 0);
 };
 
-const total = sumarizeNumbers(numbers);
-console.log(total);
-// Output: 15
+const total = sumNumbers(numbers);
+console.log(total); // Output: 15
 
 //....
 
@@ -38,8 +37,7 @@ const calculateTotal = (products) => {
 }
 
 const totalCalculated = calculateTotal(products)
-console.log(totalCalculated)
-// Output: 189.7
+console.log(totalCalculated) // Output: 189.7
 
 //...
 
@@ -57,8 +55,7 @@ const doubleNumbers = (numbers2, double) => {
 
 const doubledNumbers = doubleNumbers(numbers2, double);
 
-console.log(doubledNumbers);
-// Output: [2, 4, 6, 8, 10]
+console.log(doubledNumbers); // Output: [2, 4, 6, 8, 10]
 
 //...
 
@@ -76,8 +73,7 @@ const filterWords = (words, verifyLength) => {
 
 const filteredWords = filterWords(words, verifyLength);
 
-console.log(filteredWords);
-// Output: ['bicicle', 'pineapple']
+console.log(filteredWords); // Output: ['bicicle', 'pineapple']
 
 //...
 
@@ -156,5 +152,4 @@ const calculateTotalShop = (products2) => {
 }
 
 const totalShop = calculateTotalShop(products2);
-console.log(totalShop); 
-// Output: 468.90
+console.log(totalShop); // Output: 468.90
