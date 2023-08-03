@@ -107,3 +107,64 @@ const doubledNumbers = (numbers) => {
 }
 
 console.log(doubledNumbers(numbers)) // Output: [2, 4, 6, 8, 10]
+
+//...
+
+// 6 - Crie uma função que receba uma propriedade e um valor, e adicione em um objeto já existe, criando um novo objeto.
+
+/* // Exemplo de uso
+const person = { name: 'Marcos', age: 34 };
+const updatedPerson = addProperty(person, 'state', 'Bahia');
+console.log(updatedPerson); */
+
+const personObj = {name: 'Marcos', age: 34}
+
+// É passado como parâmetro da função qual o objeto, a propriedade e o valor dessa propriedade.
+const addProperty = (obj, prop, value) => {
+    const updatedObj = {...obj}
+    updatedObj[prop] = value
+    return updatedObj
+}
+
+const updatedPerson = addProperty(personObj, 'state', 'Bahia')
+console.log(updatedPerson) // Output: { name: 'Marcos', age: 34, state: 'Bahia' }
+
+//...
+
+// 7 - Escreva uma função que receba uma quantidade variável de argumentos numéricos e retorne um objeto contendo a soma total e o restante quando dividido por 10.
+
+/* // Exemplo de uso
+const result1 = sumAndRemainder(10, 20, 30, 40, 50);
+console.log(result1);
+
+const result2 = sumAndRemainder(15, 7, 3);
+console.log(result2); */ 
+
+const sumAndRemainder = (...args) => { //args = argumentos, tá?
+    const sum = args.reduce ((counter, args) => counter + args, 0)
+    const remainder = sum % 10
+
+    return {sum, remainder}  // {sum: com a soma feita aqui dentro, remainder: com o resto da divisã aqui dentro}
+}
+
+const total1 = sumAndRemainder(10, 20, 30, 40, 50)
+const total2 = sumAndRemainder(15, 7, 3)
+
+console.log(total1) // Output: { sum: 150, remainder: 0}
+console.log(total2) // Output: { sum: 25, remainder: 5 } 
+
+//...
+
+// 8 - Reimplemente a função fetch para usar só um then e já retornar direto os dados do json.
+
+/* // Exemplo de uso
+newFetch('https://jsonplaceholder.typicode.com/todos/1').then(response => console.log(response)) */
+
+const newFetch = async (url) => {
+    return await fetch (url) 
+    .then (response => response.json())
+}
+
+newFetch ('https://jsonplaceholder.typicode.com/todos/1')
+  .then(response => console.log(response)) 
+  .catch(error => console.error(error)) // Output: { userId: 1, id: 1, title: 'delectus aut autem', completed: false }
