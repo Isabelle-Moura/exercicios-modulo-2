@@ -15,7 +15,6 @@ const MainContent2 = ({ cart, setCart, selectedItems }) => {
 
   return (
     <>
-      <h2>Itens Selecionados</h2>
       {selectedItems.map((item) => (
         <GameContainerPage2 key={item.id}>
           <GameImage src={item.image} />
