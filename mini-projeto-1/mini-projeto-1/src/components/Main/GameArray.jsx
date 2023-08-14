@@ -4,6 +4,7 @@ export const GameArray = [
     name: "BATTLEFIELD",
     value: 10,
     image: "https://i.ibb.co/njmJbKn/2007436904f449e7130.webp",
+    quantity: 1,
   },
 
   {
@@ -11,6 +12,7 @@ export const GameArray = [
     name: "CALL OF DUTY",
     value: 10,
     image: "https://i.ibb.co/nf7LhS5/81us7k-Gp-Zx-L-AC-UF1000-1000-QL80.jpg",
+    quantity: 1,
   },
 
   {
@@ -18,6 +20,7 @@ export const GameArray = [
     name: "RESIDENT EVIL 3",
     value: 10,
     image: "https://i.ibb.co/CHsnTvm/3b70e62d5a.webp",
+    quantity: 1,
   },
 
   {
@@ -25,6 +28,7 @@ export const GameArray = [
     name: "GOD OF WAR",
     value: 10,
     image: "https://i.ibb.co/0BBBMsB/d0e988525f.webp",
+    quantity: 1,
   },
 
   {
@@ -32,6 +36,7 @@ export const GameArray = [
     name: "HORIZON",
     value: 10,
     image: "https://i.ibb.co/8BR7NKP/0d4d94f7ea.webp",
+    quantity: 1,
   },
 
   {
@@ -39,5 +44,6 @@ export const GameArray = [
     name: "FIFA 23",
     value: 10,
     image: "https://i.ibb.co/k2Y7TWT/4e8fd0e139.webp",
+    quantity: 1,
   },
 ];
