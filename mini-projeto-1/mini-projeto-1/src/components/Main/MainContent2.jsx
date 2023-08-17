@@ -9,25 +9,31 @@ import { ButtonsDisplay } from "../../styles/styles";
 import { SpanTotal } from "../../styles/styles";
 
 const MainContent2 = ({ cart, setCart, selectedItems }) => {
-  const [quantity, setQuantity] = useState(1);
+  const [quantities, setQuantities] = useState({});
 
-  const handleIncreaseQuantity = () => {
-    setQuantity(quantity + 1);
+  const handleIncreaseQuantity = (itemId) => {
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [itemId]: (prevQuantities[itemId] || 0) + 1,
+    }));
   };
 
-  const handleDecreaseQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
+  const handleDecreaseQuantity = (itemId) => {
+    if (quantities[itemId] > 1) {
+      setQuantities((prevQuantities) => ({
+        ...prevQuantities,
+        [itemId]: prevQuantities[itemId] - 1,
+      }));
     }
   };
 
   const handleAddToCart = (item) => {
-    handleIncreaseQuantity();
+    handleIncreaseQuantity(item.id);
     setCart([...cart, { ...item }]);
   };
 
   const handleRemoveFromCart = (item) => {
-    handleDecreaseQuantity();
+    handleDecreaseQuantity(item.id);
     const updatedCart = cart.filter((cartItem) => cartItem.id !== item.id);
     setCart(updatedCart);
   };
@@ -36,7 +42,7 @@ const MainContent2 = ({ cart, setCart, selectedItems }) => {
   const calculateTotalPrice = () => {
     let total = 0;
     selectedItems.forEach((item) => {
-      total += item.value * quantity;
+      total += item.value * (quantities[item.id] || 0);
     });
     return total.toFixed(2);
   };
@@ -49,10 +55,14 @@ const MainContent2 = ({ cart, setCart, selectedItems }) => {
           <SpanContainer>
             <SpanTitle>{item.name}</SpanTitle>
             <Span>Valor: R${item.value},00</Span>
-            <Span>Quantidade: {quantity}</Span>
+            <Span>Quantidade: {quantities[item.id] || 1}</Span>
             <ButtonsDisplay>
-              <ButtonMoreOrLess onClick={() => handleAddToCart(item)}>+</ButtonMoreOrLess>
-              <ButtonMoreOrLess onClick={() => handleRemoveFromCart(item)}>-</ButtonMoreOrLess>
+              <ButtonMoreOrLess onClick={() => handleAddToCart(item)}>
+                +
+              </ButtonMoreOrLess>
+              <ButtonMoreOrLess onClick={() => handleRemoveFromCart(item)}>
+                -
+              </ButtonMoreOrLess>
             </ButtonsDisplay>
           </SpanContainer>
         </GameContainerPage2>

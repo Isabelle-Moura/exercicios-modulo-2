@@ -16,9 +16,17 @@ function Main() {
     } else if (indicePage === 2) {
       setIndicePage(3);
     } else {
-      window.reload
+      window.location.reload();
       setIndicePage(1);
     }
+  };
+
+  const handleConfirmPurchase = () => {
+    alert(
+      "Compra confirmada! Agora roubamos o seu dinheiro e voê nunca mais verá o seu dinheiro de novo! KKKKKKKKKK"
+    );
+    window.location.reload();
+    setIndicePage(1);
   };
 
   return (
@@ -47,15 +55,21 @@ function Main() {
             setCart={setCart}
             selectedItems={selectedItems}
           />
-          <MainFooter p="Finalizar compra" handleChangePage={handleChangePage} />
+          <MainFooter
+            p="Finalizar compra"
+            handleChangePage={handleChangePage}
+          />
         </div>
       )}
 
       {indicePage === 3 && (
         <div>
-          <MainHeader p="Checkout" cart={cart}/>
-          <MainContent3 selectedItems={selectedItems}/>
-          <MainFooter p="Confirmar a compra" handleChangePage={handleChangePage}/>
+          <MainHeader p="Checkout" cart={cart} />
+          <MainContent3 selectedItems={selectedItems} />
+          <MainFooter
+            p="Confirmar a compra"
+            handleChangePage={handleConfirmPurchase}
+          />
         </div>
       )}
     </>
