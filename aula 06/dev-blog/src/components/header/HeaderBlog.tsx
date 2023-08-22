@@ -5,7 +5,7 @@ const HeaderBlog = () => {
     <>
       <Header>
         <img src="/arnia.png" alt="arnia-logo" />
-        <h2>Noticias de TI e Programação</h2>
+        <h2>Noticias de TI e de Programação</h2>
       </Header>
     </>
   );
