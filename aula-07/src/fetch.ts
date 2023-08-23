@@ -85,7 +85,7 @@ const boredActivityData = await getApiResponse<BoredActivityResponse>(
 );
 console.log(boredActivityData);
 
-const universityData = await getApiResponse<UniversityResponse[]>(
+const universityData = await getApiResponse<UniversityResponse>(
   universityApiUrl
 );
 console.log(universityData);
