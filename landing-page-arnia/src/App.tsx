@@ -1,4 +1,6 @@
-import Header from "./Header";
+import Header from "./components/Header";
+import Main from "./components/Main";
+import MainForm from "./components/MainForm";
 import { GlobalStyle } from "./styles/Global";
 
 const App = () => {
@@ -6,6 +8,8 @@ const App = () => {
     <>
       <GlobalStyle />
       <Header />
+      <Main />
+      <MainForm />
     </>
   );
 };

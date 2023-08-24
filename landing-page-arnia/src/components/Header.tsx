@@ -1,6 +1,6 @@
-import { HeaderPurple } from "./styles/Header";
-import { ArniaLogo } from "./styles/Header";
-import { HeaderText } from "./styles/Header";
+import { HeaderPurple } from "../styles/Header";
+import { ArniaLogo } from "../styles/Header";
+import { HeaderText } from "../styles/Header";
 
 const Header = () => {
   return (
@@ -8,9 +8,9 @@ const Header = () => {
       <HeaderPurple>
         <ArniaLogo src="https://cdn.izap.com.br/arnia.com.br/plus/images?src=tema/plusfiles/Logotipo.png&" />
         <HeaderText>
-          Se torne hoje mesmo um desenvolvedor de software.
+          Se torne hoje mesmo um desenvolvedor de software. <br />
+          Conheça a Arnia.
         </HeaderText>
-        <HeaderText>Conheça a Arnia.</HeaderText>
       </HeaderPurple>
     </>
   );
