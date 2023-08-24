@@ -1,7 +1,8 @@
+import Navigation from "./components/Navigation";
 const App = () => {
   return (
     <>
-      <div>Oiiiiiiiiiiiiiiiii!</div>
+      <Navigation />
     </>
   );
 };
