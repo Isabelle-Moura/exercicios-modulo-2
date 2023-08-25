@@ -19,7 +19,8 @@ Requisitos:
 - Utilize Styled Components para aplicar estilos diferentes para cada tipo de notificação.
 - Crie um componente NotificationBox que recebe uma lista de notificações e renderiza cada notificação utilizando o componente Notification. */
 
-import ItemList from "./components/ItemList";
+import ItemList from "./componentsTasks/ItemList";
+import NotificationBox from "./componentsNotes/NotificationBox";
 
 const App = () => {
   const itens = [
@@ -39,10 +40,25 @@ const App = () => {
     } as Reminders,
   ];
 
+  const notifications = [
+    { type: "error", message: "Erro ao carregar página." } as ErrorNotification,
+    {
+      type: "warning",
+      message: "Aviso: Reunião da empresa às 15h.",
+    } as WarningNotification,
+    {
+      type: "info",
+      message: "Novos recursos disponíveis.",
+    } as InfoNotification,
+  ];
+
   return (
     <>
       <div>
         <ItemList itens={itens} />
+      </div>
+      <div>
+        <NotificationBox notifications={notifications} />
       </div>
     </>
   );

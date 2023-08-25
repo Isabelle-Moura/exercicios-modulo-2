@@ -1,6 +1,6 @@
-import { TaskItem } from "../styles/styled";
-import { EventItem } from "../styles/styled";
-import { ReminderItem } from "../styles/styled";
+import { TaskItem } from "../styles/tasksStyle";
+import { EventItem } from "../styles/tasksStyle";
+import { ReminderItem } from "../styles/tasksStyle";
 
 interface Props {
   item: ItemType;

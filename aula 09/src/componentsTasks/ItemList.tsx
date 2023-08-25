@@ -1,5 +1,5 @@
 import ItemComponent from "./Item";
-import { ListContainer } from "../styles/styled";
+import { ListContainer } from "../styles/tasksStyle";
 
 interface ItemListProps {
   itens: ItemType[];
