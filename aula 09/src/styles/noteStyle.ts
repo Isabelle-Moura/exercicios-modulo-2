@@ -2,7 +2,8 @@ import {styled} from "styled-components"
 
 export const BoxContainer = styled.div`
 display: flex;
-flex-direction: column;
+justify-content: center;
+align-items: center;
 `;
 
 export const NotificationContainer = styled.div`
@@ -12,6 +13,7 @@ export const NotificationContainer = styled.div`
   font-family: 'Poppins', sans-serif;
   font-weight: 800;
   font-size: 15px;
+  width: 500px;
 `;
 
 export const ErrorNotification = styled(NotificationContainer)`
