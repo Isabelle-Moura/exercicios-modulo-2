@@ -40,6 +40,7 @@ Faça a renderização de uma lista de cards contendo as informações da empres
 import ItemList from "./componentsTasks/ItemList";
 import NotificationBox from "./componentsNotes/NotificationBox";
 import CartList from "./componentsShopApp/CartList";
+import CompanyList from "./componentsCompany/CompanyList";
 
 const App = () => {
   const itens = [
@@ -86,6 +87,76 @@ const App = () => {
     } as FisicalProducts,
   ];
 
+  const mockCompanies = [
+    {
+      id: "1c779bf1-2ea3-4c46-b2b2-3481c9a82092",
+      name: "Company A",
+      email: "companya@example.com",
+      phone: "123-456-7890",
+      linkedin: "linkedin.com/companya",
+      address: "123 Main Street, City A",
+    },
+    {
+      id: "2f8e6b98-158c-4c47-8d6b-163914e40c0f",
+      name: "Company B",
+      phone: "234-567-8901",
+      linkedin: "linkedin.com/companyb",
+      address: "456 Oak Avenue, City B",
+    },
+    {
+      id: "3d9f90a8-6ac8-40a2-a9b4-b9ab7057c5b9",
+      name: "Company C",
+      email: "companyc@example.com",
+      linkedin: "linkedin.com/companyc",
+      address: "789 Elm Street, City C",
+    },
+    {
+      id: "4b6e8d5c-1f2b-45d3-8e7f-a2c46594d732",
+      name: "Company D",
+      phone: "345-678-9012",
+      address: "123 Pine Avenue, City D",
+    },
+    {
+      id: "5a6b7c8d-e9f0-4a5b-8c6d-d7e8f9a0b1c2",
+      name: "Company E",
+      email: "companye@example.com",
+      linkedin: "linkedin.com/companye",
+      address: "456 Maple Street, City E",
+    },
+    {
+      id: "6d7e8f9a-b0c1-4d5e-6f7a-8b9c0d1e2f3",
+      name: "Company F",
+      phone: "456-789-0123",
+      linkedin: "linkedin.com/companyf",
+      address: "789 Oak Avenue, City F",
+    },
+    {
+      id: "7c8d9e0f-1a2b-3c4d-5e6f-7a8b9c0d1e2f",
+      name: "Company G",
+      email: "companyg@example.com",
+      address: "123 Elm Street, City G",
+    },
+    {
+      id: "8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3",
+      name: "Company H",
+      phone: "567-890-1234",
+      linkedin: "linkedin.com/companyh",
+      address: "456 Pine Avenue, City H",
+    },
+    {
+      id: "9e0f1a2b-3c4d-5e6f-7a8b-9c0d1e2f3a4b",
+      name: "Company I",
+      email: "companyi@example.com",
+      linkedin: "linkedin.com/companyi",
+      address: "789 Maple Street, City I",
+    },
+    {
+      id: "0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
+      name: "Company J",
+      address: "123 Oak Avenue, City J",
+    },
+  ];
+
   return (
     <>
       <div>
@@ -96,6 +167,9 @@ const App = () => {
       </div>
       <div>
         <CartList products={products} />
+      </div>
+      <div>
+        <CompanyList companies={mockCompanies} />
       </div>
     </>
   );
