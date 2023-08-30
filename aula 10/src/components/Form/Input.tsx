@@ -8,11 +8,11 @@ interface InputType {
 }
 
 const InputStyle = styled.input`
-  width: 200px;
+  width: 300px;
   height: 40px;
   font-size: 20px;
   padding: 0px 10px;
-  border: 1px solid indigo;
+  border: 2px solid indigo;
   border-radius: 10px;
   font-weight: 800;
   font-family: "Poppins", sans-serif;
