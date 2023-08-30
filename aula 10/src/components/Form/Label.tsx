@@ -1,15 +1,8 @@
-import { styled } from "styled-components";
+import { LabelStyle } from "../../styles/LabelStyle";
 
 interface LabelType {
   title: string;
 }
-
-const LabelStyle = styled.label`
-  font-size: 20px;
-  color: indigo;
-  font-weight: 800;
-  font-family: "Poppins", sans-serif;
-`;
 
 const Label = ({ title }: LabelType) => {
   return (

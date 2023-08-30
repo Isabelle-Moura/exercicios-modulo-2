@@ -124,6 +124,9 @@ Gere um projeto Typescript/React utilizando o Vite. No seu app.tsx, crie um tipo
 import { useState } from "react";
 import Label from "./components/Form/Label";
 import Input from "./components/Form/Input";
+import { Button } from "./styles/ButtonStyle";
+import { H1Style } from "./styles/H1Style";
+import { Form } from "./styles/FormStyle";
 
 interface UserData {
   name: string;
@@ -150,36 +153,33 @@ const App = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    console.log("User data: " + userData);
+    console.log("User data: ", userData);
   };
 
   return (
     <>
-      <h1>Formulário</h1>
-      <form onSubmit={handleSubmit}>
+      <H1Style>Formulário</H1Style>
+      <Form onSubmit={handleSubmit}>
         <Label title="Nome:" />
         <Input
           name="name"
           placeholder="Digite o seu nome."
           onChange={handleInputChange}
         />
-        <br />
         <Label title="Idade:" />
         <Input
           name="age"
           placeholder="Digite a sua idade."
           onChange={handleInputChange}
         />
-        <br />
         <Label title="Gênero:" />
         <Input
           name="gender"
           placeholder="Digite o seu gênero."
           onChange={handleInputChange}
         />
-        <br />
-        <button type="submit">Enviar</button>
-      </form>
+        <Button type="submit">Enviar</Button>
+      </Form>
     </>
   );
 };
