@@ -23,7 +23,7 @@ function Main() {
 
   const handleConfirmPurchase = () => {
     alert(
-      "Compra confirmada! Agora roubamos o seu dinheiro e voê nunca mais verá o seu dinheiro de novo! KKKKKKKKKK"
+      "Compra confirmada! Agora roubamos o seu dinheiro e você nunca mais verá o seu dinheiro de novo! KKKKKKKKKK"
     );
     window.location.reload();
     setIndicePage(1);
