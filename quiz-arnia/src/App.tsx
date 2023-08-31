@@ -1,7 +1,13 @@
+import Header from "./components/Header";
+import GlobalStyle from "./styles/GlobalStyle";
+import Main from "./components/Main/Main";
+
 const App = () => {
   return (
     <>
-      <div>Aqui não tem nada :D</div>
+      <GlobalStyle />
+      <Header />
+      <Main />
     </>
   );
 };
