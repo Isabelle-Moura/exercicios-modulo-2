@@ -1,4 +1,4 @@
-const ListQuestions = () => {
+const List = () => {
   return (
     <>
       <div>
@@ -29,4 +29,4 @@ const ListQuestions = () => {
   );
 };
 
-export default ListQuestions;
+export default List;
