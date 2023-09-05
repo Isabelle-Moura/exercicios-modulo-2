@@ -7,16 +7,16 @@ interface CartContextProps {
   updateItemCart: (productId: number, newQuantity: number) => void;
 }
 
+interface CartProviderProps {
+  children: ReactNode;
+}
+
 const CartContext = createContext<CartContextProps>({
   addItemCart: () => {},
   removeItemCart: () => {},
   updateItemCart: () => {},
   cart: [],
 });
-
-interface CartProviderProps {
-  children: ReactNode;
-}
 
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cart, setCart] = useState<CartProps>([]);
