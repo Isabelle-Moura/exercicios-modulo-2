@@ -5,9 +5,13 @@ const HomePage = () => {
 
   return (
     <>
-      <h1>Home</h1>;
+      <h1>Home</h1>
       <button onClick={() => navigate("/contact")}>
-        Entre em contato agora!
+        Entre em contato por E-mail
+      </button>{" "}
+      <br />
+      <button onClick={() => navigate("/about")}>
+        Entre em contato por Whatsapp
       </button>
     </>
   );

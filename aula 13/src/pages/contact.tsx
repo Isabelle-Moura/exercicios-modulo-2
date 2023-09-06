@@ -10,7 +10,8 @@ const ContactPage = () => {
         <label>E-mail</label>
         <input /> <br />
         <label>Assunto</label>
-        <textarea />
+        <textarea /> <br />
+        <button type="submit">Enviar</button>
       </form>
     </>
   );
