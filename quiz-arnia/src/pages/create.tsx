@@ -17,7 +17,7 @@ const Create = () => {
     e.preventDefault();
 
     try {
-      await fetch("", {
+      await fetch("http://localhost:3000/questions", {
         headers: {
           "Content-Type": "application/json",
         },

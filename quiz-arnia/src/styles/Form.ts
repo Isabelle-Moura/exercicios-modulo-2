@@ -38,6 +38,7 @@ export const IptRadio = styled.div`
       margin-left: 5px;
       width: 20px;
       height: 20px;
+      cursor: pointer;
     }
   }
 `
@@ -69,6 +70,7 @@ export const Container = styled.div`
   }
 
   button {
+    cursor: pointer;
     font-weight: 700;
     width: 227px;
     height: 49px;
@@ -76,6 +78,6 @@ export const Container = styled.div`
     background: #6950A1;
     color: #fff;
     border-radius: 1.5rem;
-    margin-left: 290px;
+    margin-left: 280px;
   }
 `
