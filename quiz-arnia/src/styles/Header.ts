@@ -15,15 +15,18 @@ export const HeaderBackground = styled.header`
   align-items: center;
   `
 
-export const MenuContainer = styled.ul`
+export const MenuContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   `
-export const MenuItem = styled.li`
-  cursor: pointer;
-  list-style: none;
-  color: #fff;
-  font-weight: 600;
-  margin-left: 20px; 
+export const Nav = styled.nav`
+   a {
+    cursor: pointer;
+    list-style: none;
+    color: #fff;
+    font-weight: 600;
+    margin-left: 20px; 
+    text-decoration: none;
+    }
 `
