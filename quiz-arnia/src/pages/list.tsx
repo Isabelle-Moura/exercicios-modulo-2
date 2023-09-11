@@ -85,11 +85,11 @@ const List = () => {
 
   return (
     <>
-      <ul>
+      <div>
         <QuestionContainer>
           <div>
             {questions.map((question) => (
-              <li key={question.id}>
+              <p key={question.id}>
                 {question.id === editedQuestion.id ? (
                   <>
                     <input
@@ -123,11 +123,11 @@ const List = () => {
                     </div>
                   </>
                 )}
-              </li>
+              </p>
             ))}
           </div>
         </QuestionContainer>
-      </ul>
+      </div>
     </>
   );
 };

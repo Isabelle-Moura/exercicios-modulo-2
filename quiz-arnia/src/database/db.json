@@ -1,13 +1,114 @@
 {
   "questions": [
     {
-      "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget lacus convallis, facilisis nulla eu, rhoncus odio. Donec sapien augue, vestibulum a odio at, ullamcorper bibendum ante?",
-      "answer1": "Nunc risus velit, ornare et luctus non, vehicula vitae ipsum. Nulla pharetra mi quis arcu viverra, quis molestie lacus gravida. Vestibulum eu tortor metus.",
-      "answer2": "Nunc risus velit, ornare et luctus non, vehicula vitae ipsum. Nulla pharetra mi quis arcu viverra, quis molestie lacus gravida. Vestibulum eu tortor metus.",
-      "answer3": "Nunc risus velit, ornare et luctus non, vehicula vitae ipsum. Nulla pharetra mi quis arcu viverra, quis molestie lacus gravida. Vestibulum eu tortor metus.",
-      "answer4": "Nunc risus velit, ornare et luctus non, vehicula vitae ipsum. Nulla pharetra mi quis arcu viverra, quis molestie lacus gravida. Vestibulum eu tortor metus.",
+      "question": "Qual é a principal função do React Router em uma aplicação React?",
+      "alternatives": {
+        "answer1": " Gerenciamento de estado global",
+        "answer2": "Roteamento e navegação",
+        "answer3": "Gerenciamento de formulários",
+        "answer4": " Integração com Redux"
+      },
       "answerCorrect": "answer2",
       "id": 1
+    },
+    {
+      "question": "Em qual arquivo você normalmente define as rotas em uma aplicação React usando o React Router?",
+      "alternatives": {
+        "answer1": "App.js",
+        "answer2": "index.js",
+        "answer3": "routes.js",
+        "answer4": " main.js"
+      },
+      "answerCorrect": "answer3",
+      "id": 2
+    },
+    {
+      "question": "Qual dos seguintes não é um componente do ciclo de vida em uma classe de componente React?",
+      "alternatives": {
+        "answer1": "render",
+        "answer2": "constructor",
+        "answer3": "componentDidMount",
+        "answer4": "useState"
+      },
+      "answerCorrect": "answer4",
+      "id": 3
+    },
+    {
+      "question": "No contexto de TypeScript, qual é o tipo de dado que representa um componente funcional no React?",
+      "alternatives": {
+        "answer1": "Component",
+        "answer2": "FunctionComponent",
+        "answer3": "ReactComponent",
+        "answer4": "FunctionalElement"
+      },
+      "answerCorrect": "answer2",
+      "id": 4
+    },
+    {
+      "question": " Qual é o propósito do hook useEffect no React?",
+      "alternatives": {
+        "answer1": "Gerenciar o estado local de um componente funcional",
+        "answer2": "Lidar com a renderização condicional",
+        "answer3": "Realizar efeitos colaterais em componentes funcionais",
+        "answer4": "Injetar dependências externas em um componente"
+      },
+      "answerCorrect": "answer3",
+      "id": 5
+    },
+    {
+      "question": "Qual é a finalidade da biblioteca Axios em uma aplicação React?",
+      "alternatives": {
+        "answer1": "Manipulação de rotas e navegação",
+        "answer2": "Gerenciamento de estado global",
+        "answer3": " Requisições HTTP assíncronas",
+        "answer4": "Validação de formulários"
+      },
+      "answerCorrect": "answer3",
+      "id": 6
+    },
+    {
+      "question": "Qual é a maneira preferida de gerenciar o estado global em uma aplicação React?",
+      "alternatives": {
+        "answer1": "Redux",
+        "answer2": " Context API",
+        "answer3": " Local state",
+        "answer4": " Mobx"
+      },
+      "answerCorrect": "answer1",
+      "id": 7
+    },
+    {
+      "question": "O que é um componente de classe no React?",
+      "alternatives": {
+        "answer1": "Um componente React criado com a classe Component",
+        "answer2": "Um componente que não pode ter estados ou propriedades",
+        "answer3": "Um componente que não pode renderizar elementos JSX",
+        "answer4": "Um componente que só pode ser usado em projetos TypeScript"
+      },
+      "answerCorrect": "answer1",
+      "id": 8
+    },
+    {
+      "question": "Qual é o objetivo da propriedade key ao renderizar uma lista de elementos em uma aplicação React?",
+      "alternatives": {
+        "answer1": "Definir um estilo CSS para cada elemento da lista",
+        "answer2": "Identificar de forma única cada elemento da lista",
+        "answer3": "Definir o tamanho da lista",
+        "answer4": "Controlar o estado de cada elemento"
+      },
+      "answerCorrect": "answer2",
+      "id": 9
+    },
+    {
+      "question": " Qual hook do React é usado para lidar com a autenticação de usuários?",
+      "alternatives": {
+        "answer1": "useAuth",
+        "answer2": "useSession",
+        "answer3": "useEffect",
+        "answer4": "useContext"
+      },
+      "answerCorrect": "answer4",
+      "id": 10
     }
   ]
 }

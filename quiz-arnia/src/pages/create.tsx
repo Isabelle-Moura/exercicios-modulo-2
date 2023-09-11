@@ -24,10 +24,12 @@ const Create = () => {
         method: "POST",
         body: JSON.stringify({
           question,
-          answer1,
-          answer2,
-          answer3,
-          answer4,
+          alternatives: {
+            answer1,
+            answer2,
+            answer3,
+            answer4,
+          },
           answerCorrect,
         }),
       });
