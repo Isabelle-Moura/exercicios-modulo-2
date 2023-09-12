@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InputAndRadio from "../components/form-create-page/input";
 import { Container } from "../styles/Form";
+import api from "../services/api";
 
 const Create = () => {
   const navigate = useNavigate();
@@ -17,24 +18,21 @@ const Create = () => {
     e.preventDefault();
 
     try {
-      await fetch("http://localhost:3000/questions", {
-        headers: {
-          "Content-Type": "application/json",
+      const response = await api.post("/", {
+        question,
+        alternatives: {
+          answer1,
+          answer2,
+          answer3,
+          answer4,
         },
-        method: "POST",
-        body: JSON.stringify({
-          question,
-          alternatives: {
-            answer1,
-            answer2,
-            answer3,
-            answer4,
-          },
-          answerCorrect,
-        }),
+        answerCorrect,
       });
-      navigate("/");
-    } catch (_) {
+      console.log(response);
+
+      navigate("/fazer-o-quiz");
+    } catch (error) {
+      console.error(error);
       alert("Erro ao cadastrar pergunta");
     }
   };

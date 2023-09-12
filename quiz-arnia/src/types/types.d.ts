@@ -9,4 +9,5 @@ interface QuestionType {
     answerCorrect: string
     id: number
     correctAnswer: string
+    setQuestion: () => void
 }

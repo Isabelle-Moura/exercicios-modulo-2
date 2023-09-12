@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { ResponseContainer } from "../styles/Response";
+import api from "../services/api";
 
 const Response = () => {
   const [questions, setQuestions] = useState<Array<QuestionType>>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [correctAnswer, setCorrectAnswer] = useState(0);
-  const [accuracyPercentage, setAccuracyPercentage] = useState(0);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [percentage, setPercentage] = useState(0);
 
   const handleNextQuestion = () => {
     if (currentQuestion < questions.length - 1) {
@@ -19,31 +20,33 @@ const Response = () => {
     }
   };
 
-  const handleAnswer = () => {
+  const handleUserAnswer = (selectedAnswer: string) => {
     const currentQuestionData = questions[currentQuestion];
-    const selectedRadio = document.querySelector(
-      'input[type="radio"]:checked'
-    ) as HTMLInputElement;
-    if (selectedRadio) {
-      const userSelectedAnswer = selectedRadio.value;
-      const userAnswerIsCorrect =
-        userSelectedAnswer === currentQuestionData.correctAnswer;
-      if (userAnswerIsCorrect) {
-        setCorrectAnswer(correctAnswer + 1);
-      }
+    if (selectedAnswer === currentQuestionData.correctAnswer) {
+      // Incrementa o número de respostas corretas
+      setCorrectAnswers(correctAnswers + 1);
     }
+
+    // Chama a função para calcular a porcentagem
+    calculateAccuracyPercentage();
+
+    if (currentQuestion < questions.length - 1) {
+      handleNextQuestion();
+    }
+  };
+
+  const calculateAccuracyPercentage = () => {
+    const totalQuestions = questions.length;
+    if (totalQuestions === 0) return 0;
+    return setPercentage((correctAnswers / totalQuestions) * 100);
   };
 
   const getAllQuestions = async () => {
     try {
-      const response = await fetch("http://localhost:3000/questions", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await api.get("http://localhost:3000/questions");
 
-      if (response.ok) {
-        return await response.json();
+      if (response.data) {
+        setQuestions(response.data);
       } else {
         throw new Error("Ocorreu um erro ao carregar as perguntas.");
       }
@@ -53,15 +56,8 @@ const Response = () => {
   };
 
   useEffect(() => {
-    getAllQuestions().then(setQuestions);
+    getAllQuestions();
   }, []);
-
-  useEffect(() => {
-    // Recalcula a porcentagem de acertos sempre que correctAnswer ou totalQuestions mudar.
-    const totalQuestions = questions.length;
-    const newAccuracyPercentage = (correctAnswer / totalQuestions) * 100;
-    setAccuracyPercentage(newAccuracyPercentage);
-  }, [correctAnswer, questions]);
 
   return (
     <>
@@ -69,15 +65,17 @@ const Response = () => {
         {questions.length > 0 ? (
           <div className="container">
             <h3 className="question">{questions[currentQuestion].question}</h3>
+            <h3>Porcentagem de Acertos: {percentage}%</h3>
             <div className="input-radio">
               <input
                 type="radio"
                 id={`answer1-${currentQuestion}`}
                 name={`question${currentQuestion}`}
                 value="answer1"
+                onClick={() => handleUserAnswer("answer1")}
               />
               <label htmlFor={`answer1-${currentQuestion}`}>
-                {questions[currentQuestion].alternatives.answer1}
+                <h4>{questions[currentQuestion].alternatives.answer1}</h4>
               </label>
             </div>
             <div className="input-radio">
@@ -88,7 +86,7 @@ const Response = () => {
                 value="answer2"
               />
               <label htmlFor={`answer2-${currentQuestion}`}>
-                {questions[currentQuestion].alternatives.answer2}
+                <h4>{questions[currentQuestion].alternatives.answer2}</h4>
               </label>
             </div>
             <div className="input-radio">
@@ -99,7 +97,7 @@ const Response = () => {
                 value="answer3"
               />
               <label htmlFor={`answer3-${currentQuestion}`}>
-                {questions[currentQuestion].alternatives.answer3}
+                <h4>{questions[currentQuestion].alternatives.answer3}</h4>
               </label>
             </div>
             <div className="input-radio">
@@ -110,7 +108,7 @@ const Response = () => {
                 value="answer4"
               />
               <label htmlFor={`answer4-${currentQuestion}`}>
-                {questions[currentQuestion].alternatives.answer4}
+                <h4>{questions[currentQuestion].alternatives.answer4}</h4>
               </label>
             </div>
 
@@ -125,18 +123,13 @@ const Response = () => {
               <h3>
                 Questão {currentQuestion + 1}/{questions.length}
               </h3>
-              <button
-                className="button"
-                onClick={() => {
-                  handleAnswer();
-                  handleNextQuestion();
-                }}
-                disabled={currentQuestion >= questions.length - 1}
-              >
-                PRÓXIMO
-              </button>
+              {/* O botão PRÓXIMO agora avança após a seleção da resposta */}
+              {currentQuestion < questions.length - 1 && (
+                <button className="button" onClick={handleNextQuestion}>
+                  PRÓXIMO
+                </button>
+              )}
             </div>
-            <h3>Porcentagem de Acertos: {accuracyPercentage.toFixed(2)}%</h3>
           </div>
         ) : (
           <div> Nenhum dado foi encontrado :/</div>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { QuestionContainer } from "../styles/List";
+import api from "../services/api";
 
 const List = () => {
   const [questions, setQuestions] = useState<Array<QuestionType>>([]);
@@ -10,15 +11,12 @@ const List = () => {
 
   const deleteButton = async (id: number) => {
     try {
-      const response = await fetch(`http://localhost:3000/questions/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await api.delete(`/${id}`);
 
-      if (response.ok) {
-        setQuestions(questions.filter((question: any) => question.id !== id));
+      if (response.status === 200) {
+        setQuestions((prevQuestions) =>
+          prevQuestions.filter((question) => question.id !== id)
+        );
       } else {
         throw new Error("Ocorreu um erro ao excluir a pergunta.");
       }
@@ -33,20 +31,13 @@ const List = () => {
 
   const saveEditedQuestion = async () => {
     try {
-      const response = await fetch(
-        `http://localhost:3000/questions/${editedQuestion.id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ question: editedQuestion.question }),
-        }
-      );
+      const response = await api.put(`/${editedQuestion.id}`, {
+        question: editedQuestion.question,
+      });
 
-      if (response.ok) {
-        setQuestions(
-          questions.map((question) =>
+      if (response.status === 200) {
+        setQuestions((prevQuestions) =>
+          prevQuestions.map((question) =>
             question.id === editedQuestion.id
               ? { ...question, question: editedQuestion.question }
               : question
@@ -63,14 +54,11 @@ const List = () => {
 
   const getAllQuestions = async () => {
     try {
-      const response = await fetch("http://localhost:3000/questions", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await api.get("http://localhost:3000/questions");
 
-      if (response.ok) {
-        return await response.json();
+      if (response.status) {
+        console.log(response.data);
+        setQuestions(response.data);
       } else {
         throw new Error("Ocorreu um erro ao carregar as perguntas.");
       }
@@ -80,7 +68,12 @@ const List = () => {
   };
 
   useEffect(() => {
-    getAllQuestions().then(setQuestions);
+    getAllQuestions()
+      .then(setQuestions())
+      .catch((error) => {
+        console.error(error);
+        setQuestions([]);
+      });
   }, []);
 
   return (
@@ -88,43 +81,49 @@ const List = () => {
       <div>
         <QuestionContainer>
           <div>
-            {questions.map((question) => (
-              <p key={question.id}>
-                {question.id === editedQuestion.id ? (
-                  <>
-                    <input
-                      type="text"
-                      value={editedQuestion.question}
-                      onChange={(e) =>
-                        setEditedQuestion({
-                          ...editedQuestion,
-                          question: e.target.value,
-                        })
-                      }
-                    />
-                    <button onClick={() => saveEditedQuestion()}>SALVAR</button>
-                  </>
-                ) : (
-                  <>
-                    <div className="div">
-                      <h4>{question.question}</h4>
-                      <div className="buttons">
-                        <button onClick={() => deleteButton(question.id)}>
-                          DELETE
-                        </button>
-                        <button
-                          onClick={() => {
-                            return editButton(question.id, question.question);
-                          }}
-                        >
-                          EDIT
-                        </button>
+            {questions !== undefined && questions.length > 0 ? (
+              questions.map((question) => (
+                <p key={question.id}>
+                  {question.id === editedQuestion.id ? (
+                    <>
+                      <input
+                        type="text"
+                        value={editedQuestion.question}
+                        onChange={(e) =>
+                          setEditedQuestion({
+                            ...editedQuestion,
+                            question: e.target.value,
+                          })
+                        }
+                      />
+                      <button onClick={() => saveEditedQuestion()}>
+                        SALVAR
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <div className="div">
+                        <h4>{question.question}</h4>
+                        <div className="buttons">
+                          <button onClick={() => deleteButton(question.id)}>
+                            DELETE
+                          </button>
+                          <button
+                            onClick={() => {
+                              return editButton(question.id, question.question);
+                            }}
+                          >
+                            EDIT
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  </>
-                )}
-              </p>
-            ))}
+                    </>
+                  )}
+                </p>
+              ))
+            ) : (
+              <p>Nenhuma pergunta encontrada.</p>
+            )}
           </div>
         </QuestionContainer>
       </div>
