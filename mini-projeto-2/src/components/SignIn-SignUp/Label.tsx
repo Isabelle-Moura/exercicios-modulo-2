@@ -1,7 +1,9 @@
+import { StyledLabel } from "../../styles/SignIn-SignUp/StyledForm";
+
 const Label = ({ title }: LabelProps) => {
   return (
     <>
-      <label>{title}</label>
+      <StyledLabel>{title}</StyledLabel>
     </>
   );
 };
