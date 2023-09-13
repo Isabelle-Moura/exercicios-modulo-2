@@ -1,7 +1,11 @@
+import Router from "./routes/routes";
+import GlobalStyle from "./styles/GlobalStyle";
+
 const App = () => {
   return (
     <>
-      <div>App :D</div>
+      <GlobalStyle />
+      <Router />
     </>
   );
 };
