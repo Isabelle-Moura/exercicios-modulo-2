@@ -1,9 +1,9 @@
 import { StyledButton } from "../../styles/SignIn-SignUp/StyledForm";
 
-const Button = ({ name }: ButtonProps) => {
+const Button = ({ name, onClick }: ButtonProps) => {
   return (
     <>
-      <StyledButton>{name}</StyledButton>
+      <StyledButton onClick={onClick}>{name}</StyledButton>
     </>
   );
 };

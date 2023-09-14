@@ -14,10 +14,19 @@ interface TitlePageProps {
 
 interface ButtonProps {
     name: string
+    onClick: () => void
 }
 
 interface SubTitleProps {
     subtitle: string
 }
 
+////////////////////////////////////
+//Tipagem dos componentes da tela Home
+
+interface ColumnProps {
+    columnTitle: string 
+    cardTitle?: string 
+    cardDescription?: string
+}
 ////////////////////////////////////
