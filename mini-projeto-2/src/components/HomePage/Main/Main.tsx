@@ -8,18 +8,21 @@ const Main = () => {
         <Column columnTitle="New" />
         <Column
           columnTitle="To Do"
-          cardTitle="Projeto Mód. II"
-          cardDescription="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, dolore!"
+          cardTitle="Lorem Ipsum"
+          cardDescription="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat saepe iure iure numquam aliquam.
+"
         />
         <Column
           columnTitle="Doing"
-          cardTitle="Kanban Arnia"
-          cardDescription="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, dolore!"
+          cardTitle="Lorem Ipsum"
+          cardDescription="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat saepe iure iure numquam aliquam.
+"
         />
         <Column
           columnTitle="Done"
-          cardTitle="Ler Harry Potter"
-          cardDescription="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, dolore!"
+          cardTitle="Lorem Ipsum"
+          cardDescription="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat saepe iure iure numquam aliquam.
+"
         />
       </ColumnsContainer>
     </>

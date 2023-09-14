@@ -7,7 +7,7 @@ export const ColumnBackground = styled.div`
   margin: 15px;
   padding: 5px;
   border-radius: 10px;
-  box-shadow: 30px black;
+  box-shadow: 1px 1px 10px #CECECE;
   `
 
 export const ColumnsContainer = styled.div`

@@ -7,7 +7,8 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index path="/fazer-login" element={<SignIn />} />
+        <Route index path="/" element={<SignIn />} />
+        <Route path="/fazer-login" element={<SignIn />} />
         <Route path="/fazer-cadastro" element={<SignUp />} />
         <Route path="/home-kanban" element={<Home />} />
       </Routes>
