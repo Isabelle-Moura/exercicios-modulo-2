@@ -1,30 +1,32 @@
-import { AxiosResponse } from "axios";
+import { AxiosResponse, isAxiosError } from "axios";
 import api from "./api";
 
-type LoginApi = {
-  token: string
-  name: string
-}
-
-export const userLogin = async ({ email, password }: LoginParams) => {
+export const userLogin = async (email: string, password: string) => {
+  console.log(email, password)
   try {
-    const response: AxiosResponse<LoginApi> = await api.post('/api/user/login', {
-      email,
-      password
-    })
-      
-      const token = response.data.token
-      const userName = response.data.name
-  
-      localStorage.setItem("token", token)
-      return userName
-  } catch (error) {
-    if (error === 404) {
-      console.error("Usuário não encontrado")  
-    } 
-    if (error === 401) {
-      console.error("Senha incorreta.")      
-    }
-  }
+    const userData: AxiosResponse<LoginApi> = await api.post(
+      "/api/user/login",
+      {
+        email,
+        password,
+      }
+    );
 
-}
+    const token = userData.data.token;
+
+    localStorage.setItem("token", token);
+
+    return userData.status; 
+  } catch (error) {
+    if (isAxiosError(error)) {
+      if (error.response?.status === 404) {
+        return "Usuário não encontrado";
+      }
+      if (error.response?.status === 401) {
+        return "Senha incorreta";
+      }
+    }
+
+    throw error; 
+  }
+};

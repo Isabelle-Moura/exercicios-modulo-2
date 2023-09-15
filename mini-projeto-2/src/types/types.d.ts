@@ -5,6 +5,7 @@ interface LabelProps {
 
 interface InputProps {
     type: "text" | "password"
+    name: string
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   }
 
@@ -33,12 +34,12 @@ interface ColumnProps {
 ////////////////////////////////////
 
 //Tipagem de envio e do recebimento na response dos dados do usuário
-interface LoginParams {
-    email: string
-    password: string
-  }
-  
-  interface LoginResponse {
-    token: string
-    name: string
-  }
+interface LoginApi {
+  name: string;
+  token: string;
+}
+
+interface UserProps {
+  email: string;
+  password: string;
+}
