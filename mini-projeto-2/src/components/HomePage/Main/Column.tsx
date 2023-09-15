@@ -14,6 +14,7 @@ import {
   CardDescription,
   TextArea,
   NewInput,
+  TextAreaAndInput,
 } from "../../../styles/Home/Card";
 import {
   ColumnBackground,
@@ -69,15 +70,17 @@ const Column = ({ columnTitle, cardTitle, cardDescription }: ColumnProps) => (
         </CardBackground>
       ) : (
         <CardBackground>
-          <NewInput placeholder="Título" />
-          <TextArea placeholder="Conteúdo" />
-          <CardButtons>
-            <FontAwesomeIcon
-              icon={faCirclePlus}
-              size="xl"
-              style={{ color: "#3a72f8", marginLeft: "90px" }}
-            />
-          </CardButtons>
+          <TextAreaAndInput>
+            <NewInput placeholder="Título" />
+            <TextArea placeholder="Conteúdo" />
+            <CardButtons>
+              <FontAwesomeIcon
+                icon={faCirclePlus}
+                size="xl"
+                style={{ color: "#3a72f8", marginTop: "6" }}
+              />
+            </CardButtons>
+          </TextAreaAndInput>
         </CardBackground>
       )}
     </ColumnBackground>

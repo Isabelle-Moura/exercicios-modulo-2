@@ -4,7 +4,7 @@ interface LabelProps {
 }
 
 interface InputProps {
-    type: string
+    type: "text" | "password"
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   }
 
@@ -13,15 +13,16 @@ interface TitlePageProps {
 }
 
 interface ButtonProps {
-    name: string
-    onClick: () => void
-}
-
+    name: string;
+    type?: "submit" | "button"
+  }
+  
 interface SubTitleProps {
     subtitle: string
 }
 
 ////////////////////////////////////
+
 //Tipagem dos componentes da tela Home
 
 interface ColumnProps {
@@ -30,3 +31,14 @@ interface ColumnProps {
     cardDescription?: string
 }
 ////////////////////////////////////
+
+//Tipagem de envio e do recebimento na response dos dados do usuário
+interface LoginParams {
+    email: string
+    password: string
+  }
+  
+  interface LoginResponse {
+    token: string
+    name: string
+  }

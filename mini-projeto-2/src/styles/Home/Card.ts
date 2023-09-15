@@ -50,7 +50,7 @@ export const NewInput = styled.input`
   border: 1px solid #575757;
   border-radius: 20px;
   outline: none;
-  padding: 0px 13px;
+  padding: 0px 15px;
   margin-bottom: 5px;
   `
 
@@ -66,4 +66,11 @@ export const TextArea = styled.textarea`
   resize: none; 
   border-radius: 20px;
   padding: 10px 15px;
+`
+
+export const TextAreaAndInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `
