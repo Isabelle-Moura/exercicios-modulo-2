@@ -26,11 +26,29 @@ interface SubTitleProps {
 
 //Tipagem dos componentes da tela Home
 
+type Column = "TODO" | "DOING" | "DONE";
+
 interface ColumnProps {
-    columnTitle: string 
-    cardTitle?: string 
-    cardDescription?: string
+  columnTitle: string 
+  currColumn: "NEW" | "TODO" | "DOING" | "DONE"
 }
+
+interface CardProps {
+  cardTitle?: string 
+  cardDescription?: string
+  placeholderInput?: string
+  placeholderTextArea?: string
+  onClick: (id: string) => void
+}
+
+type CardType = {
+  _id: string
+  title: string
+  content: string
+  column: Column
+  userId: string
+}
+
 ////////////////////////////////////
 
 //Tipagem de envio e do recebimento na response dos dados do usuário

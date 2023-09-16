@@ -5,13 +5,13 @@ export const Form = styled.form`
   flex-direction: column;
   justify-content: center; 
   align-items: flex-start;
-  `
+`
 
 export const StyledLabel = styled.label`
   color: #fff;
   font-weight: 300;
   margin: 5px 15px ;
-  `
+`
 
 export const StyledInput = styled.input`
   margin: 5px 10px;

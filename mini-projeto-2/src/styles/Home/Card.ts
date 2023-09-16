@@ -45,7 +45,7 @@ export const NewInput = styled.input`
   font-weight: 900;
   font-family: 'Poppins', sans-serif;
   color: #6b6b6b;
-  width: 190px;   
+  width: 180px;   
   height: 30px;
   border: 1px solid #575757;
   border-radius: 20px;
