@@ -8,11 +8,11 @@ const Main = () => {
     <>
       <ColumnsContainer>
         <NewColumn />
-        <Column title="To Do" />
-        <Column title="Doing" />
-        <Column title="Done" />
+        <Column column="TODO" title="To Do" />
+        <Column column="DOING" title="Doing" />
+        <Column column="DONE" title="Done" />
+        <Kanban />
       </ColumnsContainer>
-      <Kanban />
     </>
   );
 };

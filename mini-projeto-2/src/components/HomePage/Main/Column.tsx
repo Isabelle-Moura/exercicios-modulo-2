@@ -5,11 +5,12 @@ import {
 
 interface ColumnProps {
   title: string;
+  column: Column;
 }
 
-const Column = ({ title }: ColumnProps) => (
+const Column = ({ title, column }: ColumnProps) => (
   <>
-    <ColumnBackground>
+    <ColumnBackground id={column}>
       <StyledColumnTitle>{title}</StyledColumnTitle>
     </ColumnBackground>
   </>
