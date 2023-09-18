@@ -16,45 +16,51 @@ import { updateCardService } from "../../../services/card-service";
 type Props = {
   title: string;
   cards: Card[];
+  setCards: Dispatch<SetStateAction<Card[]>>; // Adicione setCards às props
 };
 
-export default function Cards({ title, cards }: Props) {
-  const [editedCard, setEditedCard] = useState<Card>({
-    title: card.title,
-    content: card.content,
-  });
+export default function Cards({ title, cards, setCards }: Props) {
+  const [editedCard, setEditedCard] = useState<Card | null>(null);
 
   const updateTheCard = async (card: Card, position: "left" | "right") => {
-    const column =
-      card.column === "TODO" || card.column === "DONE"
-        ? "DOING"
-        : position === "left"
-        ? "TODO"
-        : "DONE";
+    if (editedCard) {
+      const column =
+        card.column === "TODO" || card.column === "DONE"
+          ? "DOING"
+          : position === "left"
+          ? "TODO"
+          : "DONE";
 
-    const response = await updateCardService({
-      ...card,
-      column,
-    });
+      const response = await updateCardService({
+        ...card,
+        column,
+      });
 
-    return response;
+      setCards((prevCards) =>
+        prevCards.map((prevCard) =>
+          prevCard._id === card._id ? response : prevCard
+        )
+      );
+    }
   };
 
   const handleEditButton = async () => {
     if (editedCard) {
-      const updateCard = {
+      const updatedCard = {
         ...editedCard,
-        title: editedCard.title,
-        content: editedCard.content,
       };
 
-      const response = await updateCardService(updateCard);
+      const response = await updateCardService(updatedCard);
 
       const updatedCards = cards.map((card) =>
-        card._id === updateCard._id ? response : card
+        card._id === updatedCard._id ? response : card
       );
 
-      setEditedCard(updatedCards);
+      // Atualize o estado editedCard
+      setEditedCard(null); // Defina como null para indicar que a edição foi concluída
+
+      // Atualize o estado cards
+      setCards(updatedCards);
     }
   };
 
