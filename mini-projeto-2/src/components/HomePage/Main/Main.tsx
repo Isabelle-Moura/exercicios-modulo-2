@@ -1,12 +1,13 @@
 import { ColumnsContainer } from "../../../styles/Home/Column";
 import Column from "./Column";
 import Kanban from "./Kanban";
+import NewColumn from "./NewColumn";
 
 const Main = () => {
   return (
     <>
       <ColumnsContainer>
-        <Column title="New" />
+        <NewColumn />
         <Column title="To Do" />
         <Column title="Doing" />
         <Column title="Done" />

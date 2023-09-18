@@ -5,10 +5,29 @@ export async function getAllCards (): Promise<Card[]> {
     url: '/api/card',
     method: 'GET',
     headers: {
-      'Authorization': localStorage.getItem('TOKEN')
+      'Authorization': localStorage.getItem('token')
     }
   })
 
+  switch (response.status) {
+    case 200: return response.data
+    case 401: throw new Error('Token inválido, faça o login novamente')
+    default: throw new Error('Ocorreu um erro em nossos servidores, tente novamente mais tarde')
+  }
+}
+
+export async function addNewCard (card: Card): Promise<Card> {
+  const response = await api.request<Card>({
+    url: '/api/card',
+    method: 'POST',
+    headers: {
+      'Authorization': localStorage.getItem('token')
+    },
+    data: {
+      title: card.title,
+      content: card.content,
+      column: card.column,
+    }})
   switch (response.status) {
     case 200: return response.data
     case 401: throw new Error('Token inválido, faça o login novamente')
@@ -26,7 +45,7 @@ export async function updateCardService (card: Card): Promise<Card[]> {
       column: card.column,
     },
     headers: {
-      'Authorization': localStorage.getItem('TOKEN')
+      'Authorization': localStorage.getItem('token')
     }
   })
 
@@ -43,7 +62,7 @@ export async function deleteCard(cardId: string): Promise<void> {
       url: `/api/card/${cardId}`,
       method: 'DELETE',
       headers: {
-        'Authorization': localStorage.getItem('TOKEN'),
+        'Authorization': localStorage.getItem('token'),
       },
     });
 

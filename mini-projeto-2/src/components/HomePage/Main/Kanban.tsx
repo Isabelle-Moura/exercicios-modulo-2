@@ -1,42 +1,27 @@
+import Cards from "./Cards";
 import { useEffect, useState } from "react";
-import { deleteCard, getAllCards } from "../../../services/card-service";
-import Cards from "./Card";
+import { getAllCards } from "../../../services/card-service";
 
 const Kanban = () => {
-  const [cards, setCards] = useState<Card[]>([]);
+  const [allCards, setAllCards] = useState<Card[]>([]);
 
   useEffect(() => {
-    const fetchCards = async () => {
-      const allCards = await getAllCards();
-      if (allCards) {
-        const cardProps = allCards.map((card) => ({
-          cardTitle: card.title,
-          cardDescription: card.content,
-          onClick: () => handleDeleteCard(card._id),
-        }));
-        setCards(cardProps);
-      }
-    };
-
-    fetchCards();
+    getAllCards().then((res) => {
+      setAllCards(res);
+    });
   }, []);
 
-  const handleDeleteCard = async (cardId: string) => {
-    try {
-      await deleteCard(cardId);
-      const updatedCards = cards.filter((card) => card._id !== cardId);
-      setCards(updatedCards);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
-    <>
-      {cards.map((card) => (
-        <Cards key={card._id} title={card.title} cards={cards} />
+    <div>
+      {allCards.map((card) => (
+        <Cards
+          key={card._id}
+          cards={allCards}
+          setCards={setAllCards}
+          title=""
+        />
       ))}
-    </>
+    </div>
   );
 };
 

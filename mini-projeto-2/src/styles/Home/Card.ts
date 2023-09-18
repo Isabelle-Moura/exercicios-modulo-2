@@ -41,6 +41,13 @@ export const ButtonsContainer = styled.div`
    justify-content: space-between;  
 ` 
 
+export const FormNewCard = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+
 export const NewInput = styled.input`
   font-weight: 900;
   font-family: 'Poppins', sans-serif;
@@ -63,14 +70,8 @@ export const TextArea = styled.textarea`
   outline: none;
   width: 180px; 
   height: 100px; 
-  resize: none; 
+  resize: none;
   border-radius: 20px;
   padding: 10px 15px;
-`
-
-export const TextAreaAndInput = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin-bottom: 5px;
 `

@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   ColumnBackground,
@@ -11,57 +11,36 @@ import {
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 import * as S from "../../../styles/Home/Card";
-import { updateCardService } from "../../../services/card-service";
+import { deleteCard, updateCardService } from "../../../services/card-service";
 
 type Props = {
   title: string;
   cards: Card[];
-  setCards: Dispatch<SetStateAction<Card[]>>; // Adicione setCards às props
+  setCards: Dispatch<SetStateAction<Card[]>>;
 };
 
 export default function Cards({ title, cards, setCards }: Props) {
-  const [editedCard, setEditedCard] = useState<Card | null>(null);
-
   const updateTheCard = async (card: Card, position: "left" | "right") => {
-    if (editedCard) {
-      const column =
-        card.column === "TODO" || card.column === "DONE"
-          ? "DOING"
-          : position === "left"
-          ? "TODO"
-          : "DONE";
+    const column =
+      card.column === "TODO" || card.column === "DONE"
+        ? "DOING"
+        : position === "left"
+        ? "TODO"
+        : "DONE";
 
-      const response = await updateCardService({
-        ...card,
-        column,
-      });
+    const response = await updateCardService({
+      ...card,
+      column,
+    });
 
-      setCards((prevCards) =>
-        prevCards.map((prevCard) =>
-          prevCard._id === card._id ? response : prevCard
-        )
-      );
-    }
+    setCards(response);
   };
 
-  const handleEditButton = async () => {
-    if (editedCard) {
-      const updatedCard = {
-        ...editedCard,
-      };
+  const handleEditButton = async () => {};
 
-      const response = await updateCardService(updatedCard);
-
-      const updatedCards = cards.map((card) =>
-        card._id === updatedCard._id ? response : card
-      );
-
-      // Atualize o estado editedCard
-      setEditedCard(null); // Defina como null para indicar que a edição foi concluída
-
-      // Atualize o estado cards
-      setCards(updatedCards);
-    }
+  const handleDeleteButton = async (cardId: string) => {
+    await deleteCard(cardId).then((response) => console.log(response));
+    setCards(cards.filter((card) => card._id !== cardId));
   };
 
   return (
@@ -73,7 +52,7 @@ export default function Cards({ title, cards, setCards }: Props) {
             <div>
               <S.TitleAndEdit>
                 <S.CardTitle>{card.title}</S.CardTitle>
-                <S.CardButtons onClick={() => handleEditButton()}>
+                <S.CardButtons onClick={handleEditButton}>
                   <FontAwesomeIcon
                     icon={faPenToSquare}
                     size="xl"
@@ -92,7 +71,7 @@ export default function Cards({ title, cards, setCards }: Props) {
                     />
                   </S.CardButtons>
                 )}
-                <S.CardButtons>
+                <S.CardButtons onClick={() => handleDeleteButton(card._id)}>
                   <FontAwesomeIcon
                     icon={faTrashCan}
                     size="xl"
