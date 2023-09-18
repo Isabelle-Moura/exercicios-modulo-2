@@ -1,89 +1,112 @@
+import { Dispatch, SetStateAction, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  ColumnBackground,
+  StyledColumnTitle,
+} from "../../../styles/Home/Column";
 import {
   faCircleArrowLeft,
   faCircleArrowRight,
-  faCirclePlus,
   faPenToSquare,
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  CardBackground,
-  CardTitle,
-  CardButtons,
-  TitleAndEdit,
-  ButtonsContainer,
-  CardDescription,
-  TextArea,
-  NewInput,
-  TextAreaAndInput,
-} from "../../../styles/Home/Card";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as S from "../../../styles/Home/Card";
+import { updateCardService } from "../../../services/card-service";
 
-const Card = ({
-  cardTitle,
-  cardDescription,
-  placeholderInput,
-  placeholderTextArea,
-  onClick,
-}: CardProps) => {
-  return (
-    <>
-      {cardTitle && cardDescription ? (
-        <CardBackground>
-          <div>
-            <TitleAndEdit>
-              <CardTitle>{cardTitle}</CardTitle>
-              <CardButtons onClick={onClick}>
-                <FontAwesomeIcon
-                  icon={faPenToSquare}
-                  size="xl"
-                  style={{ color: "#3a72f8" }}
-                />
-              </CardButtons>
-            </TitleAndEdit>
-            <CardDescription>{cardDescription}</CardDescription>
-          </div>
-          <ButtonsContainer>
-            <CardButtons onClick={onClick}>
-              <FontAwesomeIcon
-                icon={faCircleArrowLeft}
-                size="xl"
-                style={{ color: "#3a72f8" }}
-              />
-            </CardButtons>
-            <CardButtons onClick={onClick}>
-              <FontAwesomeIcon
-                icon={faTrashCan}
-                size="xl"
-                style={{ color: "#3a72f8" }}
-              />
-            </CardButtons>
-            <CardButtons onClick={onClick}>
-              <FontAwesomeIcon
-                icon={faCircleArrowRight}
-                size="xl"
-                style={{ color: "#3a72f8" }}
-              />
-            </CardButtons>
-          </ButtonsContainer>
-        </CardBackground>
-      ) : null}
-      {placeholderInput && placeholderTextArea ? (
-        <CardBackground>
-          <TextAreaAndInput>
-            <NewInput placeholder={placeholderInput} />
-            <TextArea placeholder={placeholderTextArea} />
-            <CardButtons onClick={onClick}>
-              <FontAwesomeIcon
-                icon={faCirclePlus}
-                size="xl"
-                style={{ color: "#3a72f8", marginTop: "6" }}
-              />
-            </CardButtons>
-          </TextAreaAndInput>
-        </CardBackground>
-      ) : null}
-    </>
-  );
+type Props = {
+  title: string;
+  cards: Card[];
 };
 
-export default Card;
+export default function Cards({ title, cards }: Props) {
+  const [editedCard, setEditedCard] = useState<Card>({
+    title: card.title,
+    content: card.content,
+  });
+
+  const updateTheCard = async (card: Card, position: "left" | "right") => {
+    const column =
+      card.column === "TODO" || card.column === "DONE"
+        ? "DOING"
+        : position === "left"
+        ? "TODO"
+        : "DONE";
+
+    const response = await updateCardService({
+      ...card,
+      column,
+    });
+
+    return response;
+  };
+
+  const handleEditButton = async () => {
+    if (editedCard) {
+      const updateCard = {
+        ...editedCard,
+        title: editedCard.title,
+        content: editedCard.content,
+      };
+
+      const response = await updateCardService(updateCard);
+
+      const updatedCards = cards.map((card) =>
+        card._id === updateCard._id ? response : card
+      );
+
+      setEditedCard(updatedCards);
+    }
+  };
+
+  return (
+    <ColumnBackground>
+      <StyledColumnTitle>{title}</StyledColumnTitle>
+      <div>
+        {cards.map((card) => (
+          <S.CardBackground key={card._id}>
+            <div>
+              <S.TitleAndEdit>
+                <S.CardTitle>{card.title}</S.CardTitle>
+                <S.CardButtons onClick={() => handleEditButton()}>
+                  <FontAwesomeIcon
+                    icon={faPenToSquare}
+                    size="xl"
+                    style={{ color: "#3a72f8" }}
+                  />
+                </S.CardButtons>
+              </S.TitleAndEdit>
+              <S.CardDescription>{card.content}</S.CardDescription>
+              <S.ButtonsContainer>
+                {card.column !== "TODO" && (
+                  <S.CardButtons onClick={() => updateTheCard(card, "left")}>
+                    <FontAwesomeIcon
+                      icon={faCircleArrowLeft}
+                      size="xl"
+                      style={{ color: "#3a72f8" }}
+                    />
+                  </S.CardButtons>
+                )}
+                <S.CardButtons>
+                  <FontAwesomeIcon
+                    icon={faTrashCan}
+                    size="xl"
+                    style={{ color: "#3a72f8" }}
+                  />
+                </S.CardButtons>
+                {card.column !== "DONE" && (
+                  <S.CardButtons onClick={() => updateTheCard(card, "right")}>
+                    <FontAwesomeIcon
+                      icon={faCircleArrowRight}
+                      size="xl"
+                      style={{ color: "#3a72f8" }}
+                    />
+                  </S.CardButtons>
+                )}
+              </S.ButtonsContainer>
+            </div>
+          </S.CardBackground>
+        ))}
+      </div>
+    </ColumnBackground>
+  );
+}

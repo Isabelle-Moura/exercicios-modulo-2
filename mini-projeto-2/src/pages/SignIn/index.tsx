@@ -7,7 +7,7 @@ import Button from "../../components/SignIn-SignUp/Button";
 import { Container } from "../../styles/SignIn-SignUp/Container";
 import { Form } from "../../styles/SignIn-SignUp/StyledForm";
 import { StyledLink } from "../../styles/SignIn-SignUp/Container";
-import { userLogin } from "../../services/user";
+import { userLogin } from "../../services/user-service";
 
 const SignIn = () => {
   const navigate = useNavigate();

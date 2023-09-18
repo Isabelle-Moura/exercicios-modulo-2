@@ -28,9 +28,12 @@ interface SubTitleProps {
 
 type Column = "TODO" | "DOING" | "DONE";
 
-interface ColumnProps {
-  columnTitle: string 
-  currColumn: "NEW" | "TODO" | "DOING" | "DONE"
+type Card = {
+  _id: string
+  title: string
+  content: string
+  column: Column
+  userId: string
 }
 
 interface CardProps {
@@ -41,13 +44,6 @@ interface CardProps {
   onClick: (id: string) => void
 }
 
-type CardType = {
-  _id: string
-  title: string
-  content: string
-  column: Column
-  userId: string
-}
 
 ////////////////////////////////////
 

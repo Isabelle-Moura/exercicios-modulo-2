@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import { DeleteCard, GetCards } from "../../../services/card";
-import Card from "./Card";
+import { deleteCard, getAllCards } from "../../../services/card-service";
+import Cards from "./Card";
 
 const Kanban = () => {
-  const [cards, setCards] = useState<CardProps[]>([]);
+  const [cards, setCards] = useState<Card[]>([]);
 
   useEffect(() => {
     const fetchCards = async () => {
-      const allCards = await GetCards();
+      const allCards = await getAllCards();
       if (allCards) {
         const cardProps = allCards.map((card) => ({
           cardTitle: card.title,
           cardDescription: card.content,
-          onClick: () => handleDelete(card._id),
+          onClick: () => handleDeleteCard(card._id),
         }));
         setCards(cardProps);
       }
@@ -21,22 +21,20 @@ const Kanban = () => {
     fetchCards();
   }, []);
 
-  const handleDelete = async (id: string) => {
-    const newCards = await DeleteCard(id);
-    if (newCards) {
-      setCards(newCards);
+  const handleDeleteCard = async (cardId: string) => {
+    try {
+      await deleteCard(cardId);
+      const updatedCards = cards.filter((card) => card._id !== cardId);
+      setCards(updatedCards);
+    } catch (error) {
+      console.error(error);
     }
   };
 
   return (
     <>
-      {cards.map((card, index) => (
-        <Card
-          key={index}
-          cardTitle={card.cardTitle}
-          cardDescription={card.cardDescription}
-          onClick={() => handleDelete(card._id)}
-        />
+      {cards.map((card) => (
+        <Cards key={card._id} title={card.title} cards={cards} />
       ))}
     </>
   );
