@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ColumnBackground = styled.div`
-  height: 475px;
+  min-height: 520px; 
   width: 260px;
   background-color: #EAEAEA;
   margin: 15px;
@@ -14,7 +14,7 @@ export const ColumnsContainer = styled.div`
   margin: 10px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: nowrap;
 `
 
