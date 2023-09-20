@@ -73,5 +73,4 @@ export const TextArea = styled.textarea`
   resize: none;
   border-radius: 20px;
   padding: 10px 15px;
-  margin-bottom: 5px;
 `
