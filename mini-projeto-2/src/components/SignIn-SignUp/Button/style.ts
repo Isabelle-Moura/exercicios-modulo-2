@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const StyledButton = styled.button<{variant: 'MAIN' | 'SECONDARY'}>`
-  margin: 10px 98px;
+  /* margin: 10px 98px; */
   padding: 10px;
-  width: 120px;
+  min-width: 120px;
   color: ${({theme, variant}) => variant === 'MAIN' ? theme.colors.white : theme.colors.lightBlue} ;
   font-weight: 800;
   background-color: ${({theme, variant}) => variant === 'MAIN' ? theme.colors.darkBlue : theme.colors.white};

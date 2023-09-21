@@ -13,7 +13,7 @@ const Header = () => {
       <S.HeaderContainer>
         <S.StyledH1>Arnia Trello</S.StyledH1>
         <div className="user-and-link">
-          <S.StyledUserName>Olá, {name}</S.StyledUserName>
+          <S.StyledUserName>Olá, {name}!</S.StyledUserName>
           <S.StyledLink to="/fazer-login">Sair</S.StyledLink>
         </div>
       </S.HeaderContainer>
