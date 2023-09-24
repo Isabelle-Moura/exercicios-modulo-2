@@ -1,27 +1,49 @@
-# React + TypeScript + Vite
+**Using Kanban Project: A Quick Guide**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+*Introduction:*
+Before we start, understand that this guide will help you use your Kanban efficiently.
 
-Currently, two official plugins are available:
+**1. Registration:**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- First, if you're not registered:
+    - Click in "Register".
+    - Fill in the inputs with your details.
+    - Click "Register" to create an account.
 
-## Expanding the ESLint configuration
+**2. Logging In:**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- If you're already registered:
+    - Enter your username and password.
+    - Click "Log In."
 
-- Configure the top-level `parserOptions` property like this:
+**3. Navigating the Home Page:**
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- Once logged in, you'll see four columns: "New," "To Do," "Doing," and "Done."
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+**4. Let’s begin:**
+
+- In the "New" column:
+    - Fill in the inputs with a title and description.
+    - Click "+" to add it to your board.
+
+**5. Managing Cards:**
+
+- Now, with the already-made card, you’ll be able to edit and delete:
+    - To delete:
+        - Click in the “trash can” icon.
+        - If you’re sure about it, just press “Confirm”
+        - If you changed you’re mind, you can press the “Cancel” button.
+    - To edit:
+        - Click in the “pencil-in-square” icon.
+        - Then, you’ll see the previous data.
+        - To change that, just input the new title or/and the new description.
+
+**6. Moving Cards Through Columns:**
+
+- Beside all that, you can register your progress by moving the card from one column to another.
+    - If your task is in the “To Do” column and you’re working on it right now, you can move it to the “Doing” column.
+    - If your tast is done, just move it to the “Done” column (that’s obvious, i know).
+
+Now that you know how to use your Kanban, you can finally become that organized person you want it. 
+
+Have fun!
